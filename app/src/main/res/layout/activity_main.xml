@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.administrator.teamyikezhong.MainActivity">
+    tools:context="com.example.administrator.teamyikezhong.activity.MainActivity">
 
     <com.hjm.bottomtabbar.BottomTabBar
         android:layout_width="match_parent"

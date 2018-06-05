@@ -1,4 +1,4 @@
-package com.example.administrator.teamyikezhong.welcome;
+package com.example.administrator.teamyikezhong.activity.welcome;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.administrator.teamyikezhong.MainActivity;
+import com.example.administrator.teamyikezhong.activity.MainActivity;
 import com.example.administrator.teamyikezhong.R;
 
 import java.util.Timer;

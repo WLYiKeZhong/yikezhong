@@ -1,12 +1,11 @@
-package com.example.administrator.teamyikezhong;
+package com.example.administrator.teamyikezhong.activity;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.administrator.teamyikezhong.R;
 import com.example.administrator.teamyikezhong.fragment.ParagraphFragment;
-import com.example.administrator.teamyikezhong.fragment.PhotosFragment;
-import com.example.administrator.teamyikezhong.fragment.RecommendFragment;
+import com.example.administrator.teamyikezhong.ui.tuijian.RecommendFragment;
 import com.example.administrator.teamyikezhong.fragment.VideoFragment;
 import com.hjm.bottomtabbar.BottomTabBar;
 
@@ -25,8 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         mBtbar = (BottomTabBar) findViewById(R.id.btbar);
         mBtbar.init(getSupportFragmentManager())
-                //.setImgSize(80,80)
-
+                .setImgSize(80,80)
                 .addTabItem(" ",R.drawable.tuijian2,R.drawable.tuijian1, RecommendFragment.class)
                 .addTabItem("  ",R.drawable.duanzi2,R.drawable.duanzi1, ParagraphFragment.class)
                 .addTabItem("   ",R.drawable.shipin2,R.drawable.shipin1, VideoFragment.class)
