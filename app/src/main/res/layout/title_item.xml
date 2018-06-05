@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:gravity="center_vertical"
+    android:background="#03A9F4"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_height="60dp">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        fresco:roundAsCircle="true"
+        fresco:placeholderImage="@drawable/touxiang"
+        android:id="@+id/sdv"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="推荐"
+        android:textSize="25dp"
+        android:id="@+id/tv_title"
+        android:layout_centerInParent="true"/>
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+
+        fresco:placeholderImage="@drawable/raw_1500034665"
+        android:id="@+id/xie"/>
+
+</RelativeLayout>

@@ -1,17 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.administrator.teamyikezhong.activity.MainActivity">
 
+    android:id="@+id/drawerlayout"
+   >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+<com.example.administrator.teamyikezhong.title.TitleActivity
+    android:layout_width="match_parent"
+    android:id="@+id/ta"
+    android:layout_height="wrap_content">
+
+</com.example.administrator.teamyikezhong.title.TitleActivity>
     <com.hjm.bottomtabbar.BottomTabBar
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/btbar">
 
     </com.hjm.bottomtabbar.BottomTabBar>
+    </LinearLayout>
+    <!--侧滑-->
+    <RelativeLayout
+        android:id="@+id/left"
+        android:layout_width="300dp"
+        android:layout_height="700dp"
+        android:layout_gravity="left"
+        android:background="#fff"
+         >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:id="@+id/dimg"
+            android:src="@drawable/drawerlayout_background"
+            />
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="130dp"
+            fresco:roundAsCircle="true"
+            fresco:placeholderImage="@drawable/touxiang"
+            android:id="@+id/cesdv"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_marginTop="130dp"
+            android:layout_toRightOf="@+id/cesdv"
+            android:text="椰汁奶茶"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="编辑个性签名"
+            android:layout_below="@+id/cesdv"/>
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@drawable/sex"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="150dp"/>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@+id/dimg"
+            android:layout_marginTop="50dp"
+            android:id="@+id/lv">
+
+        </ListView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lv"
+            android:layout_marginTop="60dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/yl"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="夜间模式"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:text="开启"/>
+        </LinearLayout>
 
 
-</LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:src="@drawable/raw_1499947056"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:src="@drawable/raw_1499947157"/>
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+
+</android.support.v4.widget.DrawerLayout>

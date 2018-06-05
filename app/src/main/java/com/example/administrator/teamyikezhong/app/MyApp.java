@@ -5,11 +5,10 @@ import android.app.Application;
 import com.facebook.drawee.backends.pipeline.Fresco;
 
 /**
- * 初始化
- * Created by 兰昊琼 on 2018/6/5.
+ * Created by Administrator on 2018/6/5 0005.
  */
 
-public class MyApp extends Application{
+public class MyApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
