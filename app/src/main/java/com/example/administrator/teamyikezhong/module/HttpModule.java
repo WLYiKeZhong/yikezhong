@@ -71,7 +71,7 @@ public class HttpModule {
     }
     @Provides
     DuanZiApi provideDuanZiApi(OkHttpClient.Builder builder) {
-
+        builder.addInterceptor(new CommonParamsInterceptor());//添加拦截器
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Api.BASEURL)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

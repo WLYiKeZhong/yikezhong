@@ -16,7 +16,6 @@ import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerSimple;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 
 /**
@@ -46,7 +45,7 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosHodler> {
         CircleImageView icon = holder.getImg();
         TextView name = holder.getName();
         TextView time = holder.getTime();
-        JCVideoPlayerSimple videoplayer = holder.getVideoplayer();
+        JCVideoPlayerStandard videoplayer = holder.getVideoplayer();
         VideosBean.DataBean dataBean = videosBean.getData().get(position);
 
         String workDesc = dataBean.getUser().getNickname();
@@ -67,7 +66,15 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosHodler> {
         name.setText(workDesc);
         time.setText(createTime);
          holder.mPb.setText(dataBean.getWorkDesc());
-        videoplayer.setUp(videoUrl, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, "视频播放");
+
+        holder.mVideoplayer.TOOL_BAR_EXIST = false;
+        holder.mVideoplayer.setUp(videoUrl
+                , JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, "视频播放");
+
+        Glide.with(context).load(videoUrl)
+                .into( holder.mVideoplayer.thumbImageView);
+        holder.mVideoplayer.widthRatio = 4;//播放比例
+        holder.mVideoplayer.heightRatio = 3;
 
     }
 
@@ -89,7 +96,7 @@ class VideosHodler extends RecyclerView.ViewHolder {
     public FloatingActionButton mTalkItemFloatingXihuan;
     public FloatingActionsMenu mTalkItemFloating;
     public TextView mPb;
-    public JCVideoPlayerSimple mVideoplayer;
+    public JCVideoPlayerStandard mVideoplayer;
     public TextView mScAa;
 
     public ImageView mMemberSendGood;
@@ -135,7 +142,7 @@ class VideosHodler extends RecyclerView.ViewHolder {
     public TextView getTime() {
         return mRcTime;
     }
-    public JCVideoPlayerSimple getVideoplayer() {
+    public JCVideoPlayerStandard getVideoplayer() {
         return mVideoplayer;
     }
 }
