@@ -1,4 +1,4 @@
-package com.example.administrator.teamyikezhong.base;
+package com.example.administrator.teamyikezhong.ui.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,7 +14,7 @@ import javax.inject.Inject;
  * Created by Administrator on 2018/5/8 0008.
  */
 
-public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends AppCompatActivity implements IBase,BaseContract.BaseView{
+public abstract class BaseActivity<T extends BaseContract.BasePersenter> extends AppCompatActivity implements IBase,BaseContract.BaseView{
    @Inject
     protected T mPresenter;
     @Override

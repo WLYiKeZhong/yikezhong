@@ -1,6 +1,7 @@
 package com.example.administrator.teamyikezhong.ui.tuijian.contract;
 
 import com.example.administrator.teamyikezhong.bean.AdBean;
+import com.example.administrator.teamyikezhong.bean.VideosBean;
 import com.example.administrator.teamyikezhong.ui.base.BaseContract;
 
 /**
@@ -10,9 +11,12 @@ import com.example.administrator.teamyikezhong.ui.base.BaseContract;
 public interface RecommendRenMenContract {
     interface  View extends  BaseContract.BaseView{
         void  onAdSuccess(AdBean adBean);
+        void   onVideosSuccess(VideosBean videosBean);
+
 
     }
     interface  Persenter extends BaseContract.BasePersenter<View>{
           void  getAd();
+          void  getVideos(String uid,String type,String page);
     }
 }

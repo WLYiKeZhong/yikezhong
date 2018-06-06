@@ -7,4 +7,5 @@ package com.example.administrator.teamyikezhong.net;
 
 public interface Api {
     String BASEURL="https://www.zhaoapi.cn/";
+   // String  BASEURL="https://www.apiopen.top/";
 }
