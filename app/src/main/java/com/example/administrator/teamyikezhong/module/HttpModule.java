@@ -6,6 +6,8 @@ import com.example.administrator.teamyikezhong.net.ApiService;
 import com.example.administrator.teamyikezhong.net.CommonParamsInterceptor;
 import com.example.administrator.teamyikezhong.net.DuanZiApi;
 import com.example.administrator.teamyikezhong.net.VideosApi;
+import com.example.administrator.teamyikezhong.net.ProjectApi;
+import com.example.administrator.teamyikezhong.net.ProjectApiService;
 
 import java.util.concurrent.TimeUnit;
 
@@ -24,9 +26,9 @@ public class HttpModule {
     @Provides
     OkHttpClient.Builder provideOkHttpClientBuilder() {
         return new OkHttpClient.Builder()
-                .writeTimeout(200, TimeUnit.SECONDS)
-                .readTimeout(200, TimeUnit.SECONDS)
-               .connectTimeout(100, TimeUnit.SECONDS);
+                .writeTimeout(20, TimeUnit.SECONDS)
+                .readTimeout(20, TimeUnit.SECONDS)
+                .connectTimeout(10, TimeUnit.SECONDS);
     }
     @Provides
     AdApi provideAdApi(OkHttpClient.Builder builder) {
@@ -38,6 +40,22 @@ public class HttpModule {
                 .build();
         ApiService apiService = retrofit.create(ApiService.class);
         return AdApi.getAdApi(apiService);
+    }
+
+    @Provides
+    ProjectApi provideProjectApi(OkHttpClient.Builder builder){
+
+
+
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(Api.BASEURL)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(builder.build())
+                .build();
+        ProjectApiService projectApiService = retrofit.create(ProjectApiService.class);
+        return ProjectApi.getProjectApi(projectApiService);
+
+
     }
     @Provides
     VideosApi provideVideosApi(OkHttpClient.Builder builder) {
