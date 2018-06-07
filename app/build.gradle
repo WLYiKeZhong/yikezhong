@@ -52,5 +52,5 @@ dependencies {
     implementation 'com.github.ctiao:DanmakuFlameMaster:0.8.3'
     implementation 'fm.jiecao:jiecaovideoplayer:5.5.2'
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-7'
-
+    implementation files('libs/umeng-analytics-7.5.0.jar')
 }

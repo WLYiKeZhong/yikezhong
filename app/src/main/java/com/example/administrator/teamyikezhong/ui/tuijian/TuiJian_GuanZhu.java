@@ -9,6 +9,7 @@ import com.example.administrator.teamyikezhong.R;
 import com.example.administrator.teamyikezhong.bean.AdBean;
 import com.example.administrator.teamyikezhong.bean.VideosBean;
 
+
 import com.example.administrator.teamyikezhong.component.DaggerHttpComponent;
 import com.example.administrator.teamyikezhong.ui.base.BaseFragment;
 import com.example.administrator.teamyikezhong.ui.tuijian.adapter.VideosAdapter;
@@ -30,7 +31,7 @@ public class TuiJian_GuanZhu extends BaseFragment<RenMenPersenter> implements Re
 
     @Override
     public void inject() {
-        DaggerHttpComponent.builder()
+       DaggerHttpComponent.builder()
                 .build()
                 .inject(this);
     }

@@ -13,8 +13,8 @@ import android.widget.Toast;
 import com.example.administrator.teamyikezhong.R;
 import com.example.administrator.teamyikezhong.activity.MainActivity;
 
-import com.example.administrator.teamyikezhong.component.DaggerHttpComponent;
 
+import com.example.administrator.teamyikezhong.component.DaggerHttpComponent;
 import com.example.administrator.teamyikezhong.ui.base.BaseActivity;
 
 public class RegActivity extends BaseActivity<RegPresenter> implements View.OnClickListener,RegContract.View {

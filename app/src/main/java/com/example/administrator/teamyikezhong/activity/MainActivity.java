@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,6 +17,8 @@ import android.widget.Toast;
 
 
 import com.example.administrator.teamyikezhong.fragment.PhotosFragment;
+import com.example.administrator.teamyikezhong.mypage.collection.CollectionActivity;
+import com.example.administrator.teamyikezhong.mypage.guanzhu.MyFollowActivity;
 import com.example.administrator.teamyikezhong.mypage.login.LoginActivity;
 import com.example.administrator.teamyikezhong.ui.duanzi.ParagraphFragment;
 import com.example.administrator.teamyikezhong.ui.tuijian.RecommendFragment;
@@ -37,11 +40,16 @@ public class MainActivity extends AppCompatActivity {
     private SimpleDraweeView cesdv;
     private ListView lv;
     private TextView tvName;
+//    private String name;
+//    private String iconUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+       /* Intent intent = getIntent();
+        name = intent.getStringExtra("name");
+        iconUrl = intent.getStringExtra("iconUrl");*/
         initView();
         cesdv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,18 +83,45 @@ public class MainActivity extends AppCompatActivity {
         list.add(map3);
         list.add(map4);
         // 2创建适配器
-        SimpleAdapter adapter = new SimpleAdapter(this, list,
+        final SimpleAdapter adapter = new SimpleAdapter(this, list,
                 R.layout.drawerlist_item, new String[] { "name", "image" },
                 new int[] { R.id.tv_name, R.id.img });
 // 3 填充
         lv.setAdapter(adapter);
 
+       // long itemId = adapter.getItemId(0);
+
+
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 //Toast.makeText(MainActivity.this,list.get(position).toString(),Toast.LENGTH_SHORT).show();
+               switch (position){
+                   case 0:
+                       Toast.makeText(MainActivity.this,"0",Toast.LENGTH_SHORT).show();
+                       Intent intent = new Intent(MainActivity.this, MyFollowActivity.class);
+                       startActivity(intent);
+                       break;
+                   case 1:
+                       Toast.makeText(MainActivity.this,"1",Toast.LENGTH_SHORT).show();
+                       Intent intent1 = new Intent(MainActivity.this, CollectionActivity.class);
+                       startActivity(intent1);
+                       break;
+                   case 2:
+                       Toast.makeText(MainActivity.this,"2",Toast.LENGTH_SHORT).show();
+                       break;
+                   case 3:
+                       Toast.makeText(MainActivity.this,"3",Toast.LENGTH_SHORT).show();
+                       break;
+               }
+
             }
         });
+
+
+
+
     }
 
     private void initView() {
@@ -99,6 +134,8 @@ public class MainActivity extends AppCompatActivity {
         String uid = (String) SharedPreferencesUtils.getParam(MainActivity.this, "uid", "-1");
         String name = (String) SharedPreferencesUtils.getParam(MainActivity.this, "name", "");
         String iconUrl = (String) SharedPreferencesUtils.getParam(MainActivity.this, "iconUrl", "");
+
+
         if ("-1".equals(uid)){
             //return;
         }else{

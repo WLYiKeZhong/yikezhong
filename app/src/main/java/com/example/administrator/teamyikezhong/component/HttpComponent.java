@@ -1,5 +1,10 @@
 package com.example.administrator.teamyikezhong.component;
 
+
+import com.example.administrator.teamyikezhong.mypage.collection.CollectionActivity;
+import com.example.administrator.teamyikezhong.mypage.guanzhu.MyFollowActivity;
+
+import com.example.administrator.teamyikezhong.mypage.guanzhu.hotfollow.fragment.HotFragment;
 import com.example.administrator.teamyikezhong.ui.duanzi.ParagraphFragment;
 import com.example.administrator.teamyikezhong.module.HttpModule;
 import com.example.administrator.teamyikezhong.mypage.login.reg.RegActivity;
@@ -17,4 +22,9 @@ public interface HttpComponent {
     void inject(TuiJian_ReMen tuiJian_reMen);
     void inject(RegActivity regActivity);
     void inject(LoginRerActivity loginRerActivity);
+    void inject(MyFollowActivity myFollowActivity);
+    void inject(HotFragment hotFragment);
+    void inject(CollectionActivity collectionActivity);
+
+
 }

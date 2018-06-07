@@ -13,7 +13,10 @@ import com.example.administrator.teamyikezhong.R;
 import com.example.administrator.teamyikezhong.activity.MainActivity;
 
 import com.example.administrator.teamyikezhong.bean.UserBean;
+
 import com.example.administrator.teamyikezhong.component.DaggerHttpComponent;
+import com.example.administrator.teamyikezhong.mypage.collection.CollectionActivity;
+import com.example.administrator.teamyikezhong.mypage.guanzhu.MyFollowActivity;
 import com.example.administrator.teamyikezhong.mypage.login.reg.RegActivity;
 import com.example.administrator.teamyikezhong.ui.base.BaseActivity;
 import com.example.administrator.teamyikezhong.utils.SharedPreferencesUtils;
@@ -40,11 +43,13 @@ public class LoginRerActivity extends BaseActivity<LoginPresenter> implements Vi
      * 游客登陆
      */
     private TextView mTvYouke;
+    private int flay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Intent intent = getIntent();
+        flay = intent.getIntExtra("flay",-1);
         initView();
 
 
@@ -98,7 +103,7 @@ public class LoginRerActivity extends BaseActivity<LoginPresenter> implements Vi
 
     @Override
     public void inject() {
-        DaggerHttpComponent.builder().build().inject(this);
+       DaggerHttpComponent.builder().build().inject(this);
     }
 
     @Override
@@ -109,9 +114,20 @@ public class LoginRerActivity extends BaseActivity<LoginPresenter> implements Vi
         SharedPreferencesUtils.setParam(this, "name", userBean.getData().getUsername() + "");
         SharedPreferencesUtils.setParam(this, "iconUrl", userBean.getData().getIcon() + "");
         SharedPreferencesUtils.setParam(this, "token", userBean.getData().getToken() + "");
-        finish();
-        Intent intent = new Intent(LoginRerActivity.this, MainActivity.class);
-        startActivity(intent);
+
+        if (flay==1){
+            finish();
+            Intent intent = new Intent(LoginRerActivity.this, MyFollowActivity.class);
+            startActivity(intent);
+        }else if (flay==2) {
+
+            Intent intent = new Intent(LoginRerActivity.this, MainActivity.class);
+            startActivity(intent);
+        }else if(flay==3){
+            finish();
+            Intent intent = new Intent(LoginRerActivity.this, CollectionActivity.class);
+            startActivity(intent);
+        }
 
     }
 }
