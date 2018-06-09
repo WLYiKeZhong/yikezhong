@@ -5,7 +5,8 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -75,11 +76,14 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosHodler> {
                 .into( holder.mVideoplayer.thumbImageView);
         holder.mVideoplayer.widthRatio = 4;//播放比例
         holder.mVideoplayer.heightRatio = 3;
-        holder.mMemberSendGood.setOnClickListener(new View.OnClickListener() {
+        //点击心
+        holder.mMemberSendGood.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View view) {
-                if (flag){
-                    holder.mMemberSendGood.setImageDrawable(R.drawable.);
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b){
+                    holder.mMemberSendGood.setChecked(false);
+                }else {
+                    holder.mMemberSendGood.setChecked(true);
                 }
             }
         });
@@ -111,7 +115,7 @@ class VideosHodler extends RecyclerView.ViewHolder {
     public JCVideoPlayerStandard mVideoplayer;
     public TextView mScAa;
 
-    public ImageView mMemberSendGood;
+    public CheckBox mMemberSendGood;
     public LinearLayout mLinear;
 
 

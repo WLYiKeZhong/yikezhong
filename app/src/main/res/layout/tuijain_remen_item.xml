@@ -116,12 +116,13 @@
                 android:text="收藏"
                 android:textColor="#ffffff" />
 
-            <ImageView
+            <CheckBox
                 android:id="@+id/member_send_good"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                   android:background="@drawable/xin_check"
-
+                  android:button="@null"
+                android:checked="false"
                 android:layout_gravity="center_horizontal"
                  />
 

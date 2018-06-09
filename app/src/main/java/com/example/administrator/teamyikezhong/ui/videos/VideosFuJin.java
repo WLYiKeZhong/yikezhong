@@ -49,19 +49,19 @@ public class VideosFuJin extends BaseFragment<VideoFuJinPersenter> implements Vi
         xrecy_view.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
-                //page=1;
-              //  initVieos(page);
+                page=1;
+                initVieos(page);
                 xrecy_view.refreshComplete();
             }
 
             @Override
             public void onLoadMore() {
-                //page++;
-               // initVieos(page);
+                page++;
+               initVieos(page);
 
             }
         });
-        //initVieos(  page);
+        initVieos(  page);
     }
     public  void  initVieos( int page){
         String token= String.valueOf(SharedPreferencesUtils.getParam(getActivity(),"token",""));
@@ -80,6 +80,7 @@ public class VideosFuJin extends BaseFragment<VideoFuJinPersenter> implements Vi
             public void onItemClick(int postion) {
                 //跳转详情页面
                 Intent intent=new Intent(getActivity(),VideosDeailActivity.class);
+                intent.putExtra("wid",data.get(postion).getWid());
                 startActivity(intent);
             }
 
