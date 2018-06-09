@@ -4,9 +4,13 @@ import com.example.administrator.teamyikezhong.net.AdApi;
 import com.example.administrator.teamyikezhong.net.Api;
 import com.example.administrator.teamyikezhong.net.ApiService;
 import com.example.administrator.teamyikezhong.net.CommonParamsInterceptor;
+import com.example.administrator.teamyikezhong.net.DetailApi;
 import com.example.administrator.teamyikezhong.net.DuanZiApi;
 import com.example.administrator.teamyikezhong.net.UsersFollowApi;
 import com.example.administrator.teamyikezhong.net.UsersFollowApiService;
+import com.example.administrator.teamyikezhong.net.HotVideosApi;
+import com.example.administrator.teamyikezhong.net.JokeDetailApi;
+import com.example.administrator.teamyikezhong.net.NearVideosApi;
 import com.example.administrator.teamyikezhong.net.VideosApi;
 import com.example.administrator.teamyikezhong.net.ProjectApi;
 import com.example.administrator.teamyikezhong.net.ProjectApiService;
@@ -32,6 +36,7 @@ public class HttpModule {
                 .readTimeout(20, TimeUnit.SECONDS)
                 .connectTimeout(10, TimeUnit.SECONDS);
     }
+    //轮播图api
     @Provides
     AdApi provideAdApi(OkHttpClient.Builder builder) {
         Retrofit retrofit = new Retrofit.Builder()
@@ -43,7 +48,7 @@ public class HttpModule {
         ApiService apiService = retrofit.create(ApiService.class);
         return AdApi.getAdApi(apiService);
     }
-
+//注册api
     @Provides
     ProjectApi provideProjectApi(OkHttpClient.Builder builder){
 
@@ -59,6 +64,7 @@ public class HttpModule {
 
 
     }
+    //推荐视频api
     @Provides
     VideosApi provideVideosApi(OkHttpClient.Builder builder) {
         builder.addInterceptor(new CommonParamsInterceptor());//添加拦截器
@@ -71,6 +77,7 @@ public class HttpModule {
         ApiService apiService = retrofit.create(ApiService.class);
         return VideosApi.getVideosApi(apiService);
     }
+    //段子api
     @Provides
     DuanZiApi provideDuanZiApi(OkHttpClient.Builder builder) {
         builder.addInterceptor(new CommonParamsInterceptor());//添加拦截器
@@ -97,4 +104,52 @@ public class HttpModule {
         return UsersFollowApi.getUsersFollowApi(usersFollowApiService);
     }
 
+    @Provides
+    HotVideosApi provideHotVideosApi(OkHttpClient.Builder builder) {
+        builder.addInterceptor(new CommonParamsInterceptor());//添加拦截器
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Api.BASEURL)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(builder.build())
+                .build();
+        ApiService apiService = retrofit.create(ApiService.class);
+        return HotVideosApi.getHotVideosApi(apiService);
+    }
+    @Provides
+    NearVideosApi provideNearVideosApi(OkHttpClient.Builder builder) {
+        builder.addInterceptor(new CommonParamsInterceptor());//添加拦截器
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Api.BASEURL)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(builder.build())
+                .build();
+        ApiService apiService = retrofit.create(ApiService.class);
+        return NearVideosApi.getNearVideosApi(apiService);
+    }
+    @Provides
+    DetailApi provideDetailApi(OkHttpClient.Builder builder) {
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Api.BASEURL)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(builder.build())
+                .build();
+        ApiService apiService = retrofit.create(ApiService.class);
+        return DetailApi.getDetailApi(apiService);
+    }
+    @Provides
+    JokeDetailApi provideJokeDetailApi(OkHttpClient.Builder builder) {
+        builder.addInterceptor(new CommonParamsInterceptor());//添加拦截器
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Api.BASEURL)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(builder.build())
+                .build();
+        ApiService apiService = retrofit.create(ApiService.class);
+        return JokeDetailApi.getJokeDetailApi(apiService);
+    }
 }

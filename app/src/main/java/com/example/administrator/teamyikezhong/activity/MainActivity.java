@@ -22,7 +22,7 @@ import com.example.administrator.teamyikezhong.mypage.guanzhu.MyFollowActivity;
 import com.example.administrator.teamyikezhong.mypage.login.LoginActivity;
 import com.example.administrator.teamyikezhong.ui.duanzi.ParagraphFragment;
 import com.example.administrator.teamyikezhong.ui.tuijian.RecommendFragment;
-import com.example.administrator.teamyikezhong.fragment.VideoFragment;
+import com.example.administrator.teamyikezhong.ui.videos.VideoFragment;
 import com.example.administrator.teamyikezhong.title.TitleActivity;
 import com.example.administrator.teamyikezhong.utils.SharedPreferencesUtils;
 import com.facebook.drawee.view.SimpleDraweeView;

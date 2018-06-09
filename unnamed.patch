@@ -1,0 +1,40 @@
+Index: app/src/main/java/com/example/administrator/teamyikezhong/module/HttpModule.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/administrator/teamyikezhong/module/HttpModule.java	(revision cb1119f4af4b73e259cc4a921b9d68b3f614cde3)
++++ app/src/main/java/com/example/administrator/teamyikezhong/module/HttpModule.java	(revision )
+@@ -32,6 +32,7 @@
+                 .readTimeout(20, TimeUnit.SECONDS)
+                 .connectTimeout(10, TimeUnit.SECONDS);
+     }
++    //轮播图api
+     @Provides
+     AdApi provideAdApi(OkHttpClient.Builder builder) {
+         Retrofit retrofit = new Retrofit.Builder()
+@@ -43,7 +44,7 @@
+         ApiService apiService = retrofit.create(ApiService.class);
+         return AdApi.getAdApi(apiService);
+     }
+-
++//注册api
+     @Provides
+     ProjectApi provideProjectApi(OkHttpClient.Builder builder){
+ 
+@@ -59,6 +60,7 @@
+ 
+ 
+     }
++    //推荐视频api
+     @Provides
+     VideosApi provideVideosApi(OkHttpClient.Builder builder) {
+         builder.addInterceptor(new CommonParamsInterceptor());//添加拦截器
+@@ -71,6 +73,7 @@
+         ApiService apiService = retrofit.create(ApiService.class);
+         return VideosApi.getVideosApi(apiService);
+     }
++    //段子api
+     @Provides
+     DuanZiApi provideDuanZiApi(OkHttpClient.Builder builder) {
+         builder.addInterceptor(new CommonParamsInterceptor());//添加拦截器

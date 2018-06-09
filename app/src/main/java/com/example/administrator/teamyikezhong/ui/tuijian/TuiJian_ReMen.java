@@ -15,6 +15,7 @@ import com.example.administrator.teamyikezhong.ui.tuijian.adapter.VideosAdapter;
 import com.example.administrator.teamyikezhong.ui.tuijian.contract.RecommendRenMenContract;
 import com.example.administrator.teamyikezhong.ui.tuijian.persenter.RenMenPersenter;
 import com.example.administrator.teamyikezhong.utils.MyBanner;
+import com.example.administrator.teamyikezhong.utils.SharedPreferencesUtils;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
@@ -72,8 +73,8 @@ public class TuiJian_ReMen extends BaseFragment<RenMenPersenter> implements Reco
     }
 
     public void initVideos() {
+        String uid = String.valueOf(SharedPreferencesUtils.getParam(getActivity(), "uid", ""));
 
-        String uid = "10206";
 
         String type = "1";
         String page = "1";

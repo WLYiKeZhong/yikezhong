@@ -25,7 +25,7 @@ import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 public class VideosAdapter extends RecyclerView.Adapter<VideosHodler> {
     private Context context;
     private VideosBean videosBean;
-
+    private  boolean flag=false;
     public VideosAdapter(Context context, VideosBean videosBean) {
         this.context = context;
         this.videosBean = videosBean;
@@ -75,14 +75,26 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosHodler> {
                 .into( holder.mVideoplayer.thumbImageView);
         holder.mVideoplayer.widthRatio = 4;//播放比例
         holder.mVideoplayer.heightRatio = 3;
+        holder.mMemberSendGood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (flag){
+                    holder.mMemberSendGood.setImageDrawable(R.drawable.);
+                }
+            }
+        });
 
     }
 
 
     @Override
     public int getItemCount() {
+        if(videosBean!=null){
+            return videosBean.getData().size();
+        }
+            return 0;
 
-        return videosBean.getData().size();
+
     }
 
 }

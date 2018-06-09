@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.administrator.teamyikezhong.R;
 import com.example.administrator.teamyikezhong.bean.DuanZiBean;
+import com.example.administrator.teamyikezhong.inter.OnItemLinter;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
@@ -24,7 +25,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class MyDuanZiRCAdapter extends RecyclerView.Adapter<MyDuanZiRCHolder> {
     private Context context;
     private List<DuanZiBean.DataBean> list;
-
+    public OnItemLinter onItemLinter;
     public MyDuanZiRCAdapter(Context context, List<DuanZiBean.DataBean> list) {
         this.context = context;
         this.list = list;
@@ -40,7 +41,7 @@ public class MyDuanZiRCAdapter extends RecyclerView.Adapter<MyDuanZiRCHolder> {
 
 
     @Override
-    public void onBindViewHolder(@NonNull MyDuanZiRCHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyDuanZiRCHolder holder, final int position) {
         String url = list.get(position).getUser().getIcon();
         if (url == null) {
 
@@ -51,6 +52,13 @@ public class MyDuanZiRCAdapter extends RecyclerView.Adapter<MyDuanZiRCHolder> {
        holder.rcName.setText(list.get(position).getUser().getNickname());
         holder.rcTime.setText(list.get(position).getCreateTime());
         holder.dzContent.setText(list.get(position).getContent());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onItemLinter.onLongItemClick(position);
+                onItemLinter.onItemClick(position);
+            }
+        });
     }
 
 
@@ -59,6 +67,9 @@ public class MyDuanZiRCAdapter extends RecyclerView.Adapter<MyDuanZiRCHolder> {
         return list.size();
     }
 
+    public  void  onVideosItemLintenr(OnItemLinter onItemLinter){
+        this.onItemLinter=onItemLinter;
+    }
 
 }
 
