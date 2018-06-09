@@ -2,11 +2,13 @@ package com.example.administrator.teamyikezhong.component;
 
 
 import com.example.administrator.teamyikezhong.mypage.collection.CollectionActivity;
+import com.example.administrator.teamyikezhong.mypage.friends.FriendsActivity;
 import com.example.administrator.teamyikezhong.mypage.guanzhu.MyFollowActivity;
 
 import com.example.administrator.teamyikezhong.mypage.guanzhu.hotfollow.fragment.HotFragment;
 import com.example.administrator.teamyikezhong.ui.detail.DuanZiDetailActivity;
 import com.example.administrator.teamyikezhong.ui.detail.VideosDeailActivity;
+import com.example.administrator.teamyikezhong.mypage.login.wangjipass.ShePassActivity;
 import com.example.administrator.teamyikezhong.ui.duanzi.ParagraphFragment;
 import com.example.administrator.teamyikezhong.module.HttpModule;
 import com.example.administrator.teamyikezhong.mypage.login.reg.RegActivity;
@@ -33,6 +35,8 @@ public interface HttpComponent {
     void inject(MyFollowActivity myFollowActivity);
     void inject(HotFragment hotFragment);
     void inject(CollectionActivity collectionActivity);
+    void inject(FriendsActivity friendsActivity);
+    void inject(ShePassActivity shePassActivity);
 
 
 }

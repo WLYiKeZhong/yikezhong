@@ -1,8 +1,10 @@
 package com.example.administrator.teamyikezhong.net;
 
 import com.example.administrator.teamyikezhong.bean.FollowUsersBean;
+import com.example.administrator.teamyikezhong.bean.FriendsBean;
 import com.example.administrator.teamyikezhong.bean.HotFollowBean;
 import com.example.administrator.teamyikezhong.bean.MyCollectionBean;
+import com.example.administrator.teamyikezhong.bean.SouFriendsBean;
 
 import io.reactivex.Observable;
 import retrofit2.http.Field;
@@ -34,4 +36,12 @@ public class UsersFollowApi {
     public  Observable<MyCollectionBean> getFavorites(String uid,String token){
         return usersFollowApiService.getFavorites(uid,token);
     }
+    public  Observable<FriendsBean> randomFriends(){
+        return usersFollowApiService.randomFriends();
+    }
+    public  Observable<SouFriendsBean> searchFriends(String keywords){
+        return usersFollowApiService.searchFriends(keywords);
+    }
+
+
 }

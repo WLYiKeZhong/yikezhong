@@ -1,6 +1,7 @@
 package com.example.administrator.teamyikezhong.net;
 
 import com.example.administrator.teamyikezhong.bean.RegBean;
+import com.example.administrator.teamyikezhong.bean.UpdatePassBean;
 import com.example.administrator.teamyikezhong.bean.UserBean;
 
 import io.reactivex.Observable;
@@ -23,4 +24,9 @@ public interface ProjectApiService {
     @POST("quarter/register")
     Observable<RegBean> reg(@Field("mobile") String mobile,
                             @Field("password") String password);
+
+    @FormUrlEncoded
+    @POST("quarter/getPass")
+    Observable<UpdatePassBean> getPass(@Field("mobile") String mobile, @Field("newPass") String newPass);
+
 }

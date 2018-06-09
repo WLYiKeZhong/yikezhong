@@ -18,8 +18,10 @@ import android.widget.Toast;
 
 import com.example.administrator.teamyikezhong.fragment.PhotosFragment;
 import com.example.administrator.teamyikezhong.mypage.collection.CollectionActivity;
+import com.example.administrator.teamyikezhong.mypage.friends.FriendsActivity;
 import com.example.administrator.teamyikezhong.mypage.guanzhu.MyFollowActivity;
 import com.example.administrator.teamyikezhong.mypage.login.LoginActivity;
+import com.example.administrator.teamyikezhong.mypage.xiaoxi.XiaoXiActivity;
 import com.example.administrator.teamyikezhong.ui.duanzi.ParagraphFragment;
 import com.example.administrator.teamyikezhong.ui.tuijian.RecommendFragment;
 import com.example.administrator.teamyikezhong.ui.videos.VideoFragment;
@@ -110,9 +112,13 @@ public class MainActivity extends AppCompatActivity {
                        break;
                    case 2:
                        Toast.makeText(MainActivity.this,"2",Toast.LENGTH_SHORT).show();
+                       Intent intent2 = new Intent(MainActivity.this, FriendsActivity.class);
+                       startActivity(intent2);
                        break;
                    case 3:
                        Toast.makeText(MainActivity.this,"3",Toast.LENGTH_SHORT).show();
+                       Intent intent3 = new Intent(MainActivity.this, XiaoXiActivity.class);
+                       startActivity(intent3);
                        break;
                }
 

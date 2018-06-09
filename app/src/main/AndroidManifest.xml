@@ -55,7 +55,11 @@
             android:name="com.tencent.connect.common.AssistActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity android:name=".mypage.collection.CollectionActivity"></activity>
+        <activity android:name=".mypage.collection.CollectionActivity" />
+        <activity android:name=".mypage.friends.FriendsActivity" />
+        <activity android:name=".mypage.xiaoxi.XiaoXiActivity" />
+        <activity android:name=".mypage.login.wangjipass.WjPassActivity" />
+        <activity android:name=".mypage.login.wangjipass.ShePassActivity"></activity>
     </application>
 
 </manifest>

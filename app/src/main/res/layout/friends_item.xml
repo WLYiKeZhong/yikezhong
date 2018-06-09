@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_height="80dp">
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        fresco:roundAsCircle="true"
+        fresco:placeholderImage="@drawable/touxiang"
+        android:id="@+id/sdv"/>
+
+
+    <LinearLayout
+        android:layout_width="130dp"
+        android:layout_height="80dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_name"
+            android:textSize="20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:text="吃货们快戳我！"
+            android:id="@+id/tv_con"/>
+    </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guanzhu"
+        android:background="#fff"
+        android:text="+ 关注"
+
+        android:layout_marginLeft="140dp"
+        android:textColor="#FF6666DE"
+       />
+
+</LinearLayout>

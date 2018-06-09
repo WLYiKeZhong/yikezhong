@@ -1,13 +1,17 @@
 package com.example.administrator.teamyikezhong.net;
 
 import com.example.administrator.teamyikezhong.bean.FollowUsersBean;
+import com.example.administrator.teamyikezhong.bean.FriendsBean;
 import com.example.administrator.teamyikezhong.bean.HotFollowBean;
 import com.example.administrator.teamyikezhong.bean.MyCollectionBean;
+import com.example.administrator.teamyikezhong.bean.SouFriendsBean;
+import com.example.administrator.teamyikezhong.bean.UpdatePassBean;
 import com.example.administrator.teamyikezhong.bean.UserBean;
 
 import io.reactivex.Observable;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 /**
@@ -27,5 +31,14 @@ public interface UsersFollowApiService {
     @FormUrlEncoded
     @POST("quarter/getFavorites")
     Observable<MyCollectionBean> getFavorites(@Field("uid") String uid,@Field("token") String token);
+
+
+    @GET("quarter/randomFriends")
+    Observable<FriendsBean> randomFriends();
+
+    @FormUrlEncoded
+    @POST("quarter/searchFriends")
+    Observable<SouFriendsBean> searchFriends(@Field("keywords") String keywords);
+
 
 }

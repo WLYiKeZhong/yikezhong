@@ -61,8 +61,6 @@ public class CollectionActivity extends BaseActivity<CollectionPresenter> implem
         }else {
             mPresenter.getFavorites(uid, token);
         }
-
-
         //mPresenter.getFavorites(uid,token);
     }
 

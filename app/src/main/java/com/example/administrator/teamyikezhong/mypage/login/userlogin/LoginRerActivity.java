@@ -16,8 +16,10 @@ import com.example.administrator.teamyikezhong.bean.UserBean;
 
 import com.example.administrator.teamyikezhong.component.DaggerHttpComponent;
 import com.example.administrator.teamyikezhong.mypage.collection.CollectionActivity;
+import com.example.administrator.teamyikezhong.mypage.friends.FriendsActivity;
 import com.example.administrator.teamyikezhong.mypage.guanzhu.MyFollowActivity;
 import com.example.administrator.teamyikezhong.mypage.login.reg.RegActivity;
+import com.example.administrator.teamyikezhong.mypage.login.wangjipass.WjPassActivity;
 import com.example.administrator.teamyikezhong.ui.base.BaseActivity;
 import com.example.administrator.teamyikezhong.utils.SharedPreferencesUtils;
 
@@ -65,6 +67,7 @@ public class LoginRerActivity extends BaseActivity<LoginPresenter> implements Vi
         mBtnTijiao = (Button) findViewById(R.id.btn_tijiao);
         mBtnTijiao.setOnClickListener(this);
         mTvWangjimima = (TextView) findViewById(R.id.tv_wangjimima);
+        mTvWangjimima.setOnClickListener(this);
         mTvYouke = (TextView) findViewById(R.id.tv_youke);
         mTvYouke.setOnClickListener(this);
         mImg2.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +95,10 @@ public class LoginRerActivity extends BaseActivity<LoginPresenter> implements Vi
             case R.id.tv_youke:
 
                 finish();
+                break;
+            case R.id.tv_wangjimima:
+                Intent intent1 = new Intent(LoginRerActivity.this, WjPassActivity.class);
+                startActivity(intent1);
                 break;
         }
     }
@@ -126,6 +133,10 @@ public class LoginRerActivity extends BaseActivity<LoginPresenter> implements Vi
         }else if(flay==3){
             finish();
             Intent intent = new Intent(LoginRerActivity.this, CollectionActivity.class);
+            startActivity(intent);
+        }else  if(flay==4){
+            finish();
+            Intent intent = new Intent(LoginRerActivity.this, FriendsActivity.class);
             startActivity(intent);
         }
 
