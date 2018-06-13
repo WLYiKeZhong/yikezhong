@@ -1,5 +1,6 @@
 package com.example.administrator.teamyikezhong.net;
 
+import com.example.administrator.teamyikezhong.bean.BaseBean;
 import com.example.administrator.teamyikezhong.bean.FollowUsersBean;
 import com.example.administrator.teamyikezhong.bean.FriendsBean;
 import com.example.administrator.teamyikezhong.bean.HotFollowBean;
@@ -40,5 +41,7 @@ public interface UsersFollowApiService {
     @POST("quarter/searchFriends")
     Observable<SouFriendsBean> searchFriends(@Field("keywords") String keywords);
 
-
+    @FormUrlEncoded
+    @POST("quarter/publishJoke")
+    Observable<BaseBean> publishJoke(@Field("uid") String uid,@Field("token") String token,@Field("content") String content);
 }

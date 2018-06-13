@@ -1,7 +1,9 @@
 package com.example.administrator.teamyikezhong.activity;
 import com.example.administrator.teamyikezhong.R;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -9,8 +11,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,10 +26,13 @@ import android.widget.Toast;
 
 import com.example.administrator.teamyikezhong.fragment.PhotosFragment;
 import com.example.administrator.teamyikezhong.mypage.collection.CollectionActivity;
+import com.example.administrator.teamyikezhong.mypage.fabu.FaBuActivity;
 import com.example.administrator.teamyikezhong.mypage.friends.FriendsActivity;
 import com.example.administrator.teamyikezhong.mypage.guanzhu.MyFollowActivity;
 import com.example.administrator.teamyikezhong.mypage.login.LoginActivity;
+import com.example.administrator.teamyikezhong.mypage.shezhi.ShezhiActivity;
 import com.example.administrator.teamyikezhong.mypage.xiaoxi.XiaoXiActivity;
+import com.example.administrator.teamyikezhong.mypage.zuopin.MyZuoPinActivity;
 import com.example.administrator.teamyikezhong.ui.duanzi.ParagraphFragment;
 import com.example.administrator.teamyikezhong.ui.tuijian.RecommendFragment;
 import com.example.administrator.teamyikezhong.ui.videos.VideoFragment;
@@ -34,8 +45,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
+    /**
+     * 日间模式
+     */
+    private final static int DAY_THEME = 1;
 
+    /**
+     * 夜间模式
+     */
+    private final static int NIGHT_THEME = 2;
+
+    private int width;
+    private int height;
+    private int statusBarHeight;
     private BottomTabBar mBtbar;
     private DrawerLayout drawerlayout;
     private TitleActivity ta;
@@ -44,15 +67,20 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvName;
 //    private String name;
 //    private String iconUrl;
+private ImageView mMianDay;
+private ImageView zuopin;
+private ImageView shezhi;
+    private Button mMainNone;
+    private LinearLayout mLinearNightMode;
+    private RelativeLayout left;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       /* Intent intent = getIntent();
-        name = intent.getStringExtra("name");
-        iconUrl = intent.getStringExtra("iconUrl");*/
+
         initView();
+        getInitData();
         cesdv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,11 +165,50 @@ public class MainActivity extends AppCompatActivity {
         ta = findViewById(R.id.ta);
         lv = findViewById(R.id.lv);
         tvName = findViewById(R.id.tvName);
+        shezhi = findViewById(R.id.shezhi);
+        zuopin = findViewById(R.id.zuopin);
+
+        mMianDay = (ImageView) findViewById(R.id.mian_day);
+        mMainNone =  findViewById(R.id.main_none);
+       // mMainNone.setOnClickListener(this);
+        mLinearNightMode = (LinearLayout) findViewById(R.id.linear_nightMode);
+        left = (RelativeLayout) findViewById(R.id.left);
         String uid = (String) SharedPreferencesUtils.getParam(MainActivity.this, "uid", "-1");
         String name = (String) SharedPreferencesUtils.getParam(MainActivity.this, "name", "");
         String iconUrl = (String) SharedPreferencesUtils.getParam(MainActivity.this, "iconUrl", "");
 
+        //设置夜间模式
+        mMainNone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchDayNightTheme();
+                //加载当前的主题
+                if (getCurrentTheme() == DAY_THEME) {
+                    setDayThemeInfo();
+                } else if (getCurrentTheme() == NIGHT_THEME) {
+                    setNightThemeInfo();
+                } else {
+                    setDayThemeInfo();
+                }
+            }
+        });
 
+        //设置
+        shezhi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ShezhiActivity.class);
+                startActivity(intent);
+            }
+        });
+        //我的作品
+        zuopin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MyZuoPinActivity.class);
+                startActivity(intent);
+            }
+        });
         if ("-1".equals(uid)){
             //return;
         }else{
@@ -174,9 +241,142 @@ ta.setOnItemTitleClickListener(new TitleActivity.OnItemTitleClickListener() {
 
     @Override
     public void onClickrigth(View v) {
-
+        Intent intent = new Intent(MainActivity.this, FaBuActivity.class);
+        startActivity(intent);
     }
 });
 
     }
+
+    private void getInitData() {
+        WindowManager wm = this.getWindowManager();
+        width = wm.getDefaultDisplay().getWidth();
+        height = wm.getDefaultDisplay().getHeight();
+
+        //获取status_bar_height资源的ID
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            //根据资源ID获取响应的尺寸值
+            statusBarHeight = getResources().getDimensionPixelSize(resourceId);
+        }
+    }
+
+    /**
+     * 设置模式
+     *
+     * @param dayTheme
+     */
+    private void setMyTheme(int dayTheme) {
+        switch (dayTheme) {
+            case DAY_THEME:
+                setDayTheme();
+                break;
+            case NIGHT_THEME:
+                setNightTheme();
+                break;
+            default:
+                setDayTheme();
+                break;
+        }
+    }
+
+    /**
+     * 设置夜间模式
+     */
+    private void setNightTheme() {
+        final ImageView imageView = new ImageView(this);
+        imageView.setLayoutParams(new ViewGroup.LayoutParams(width, height - statusBarHeight));
+
+        mLinearNightMode.addView(imageView);
+        //设置新主题
+        setNightThemeInfo();
+
+    }
+
+    boolean flag = true;
+
+    /**
+     * 设置夜间模式具体代码
+     */
+    private void setNightThemeInfo() {
+        drawerlayout.setBackgroundColor(Color.parseColor("#333444"));
+        left.setBackgroundColor(Color.parseColor("#333444"));
+        mMianDay.setImageResource(R.drawable.a);
+        mMainNone.setText("关闭");
+        // mMainNone.setImageResource(R.mipmap.select);
+    }
+
+    /**
+     * 设置日渐模式具体代码
+     */
+    private void setDayThemeInfo() {
+        drawerlayout.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        left.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        mMianDay.setImageResource(R.drawable.yl);
+        mMainNone.setText("开启");
+        // mMainNone.setImageResource(R.mipmap.none);
+    }
+
+    /**
+     * 设置日间模式
+     */
+    private void setDayTheme() {
+        final ImageView imageView = new ImageView(this);
+        imageView.setLayoutParams(new ViewGroup.LayoutParams(width, height - statusBarHeight));
+        imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+
+        mLinearNightMode.addView(imageView);
+        //设置新主题
+        setDayThemeInfo();
+
+
+    }
+
+
+    /**
+     * 切换日渐模式或夜间模式
+     */
+    private void switchDayNightTheme() {
+        int curMode = getCurrentTheme();
+        switch (curMode) {
+            case DAY_THEME:
+                saveCurrentTheme(NIGHT_THEME);
+                setMyTheme(NIGHT_THEME);
+                break;
+            case NIGHT_THEME:
+                saveCurrentTheme(DAY_THEME);
+                setMyTheme(DAY_THEME);
+                break;
+            default:
+                saveCurrentTheme(DAY_THEME);
+                setMyTheme(DAY_THEME);
+                break;
+        }
+    }
+
+
+    /**
+     * 保存当前模式
+     *
+     * @param mode
+     */
+    private void saveCurrentTheme(int mode) {
+        SharedPreferences preferences = getSharedPreferences("AppTheme", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt("mode", mode);
+        editor.apply();
+    }
+
+
+    /**
+     * 获取当前模式
+     *
+     * @m mode
+     */
+    private int getCurrentTheme() {
+        SharedPreferences preferences = getSharedPreferences("AppTheme", Context.MODE_PRIVATE);
+        int currentMode = preferences.getInt("mode", 0);
+        return currentMode;
+    }
+
 }

@@ -2,6 +2,7 @@ package com.example.administrator.teamyikezhong.component;
 
 
 import com.example.administrator.teamyikezhong.mypage.collection.CollectionActivity;
+import com.example.administrator.teamyikezhong.mypage.fabu.duanzi.FaBuDuanActivity;
 import com.example.administrator.teamyikezhong.mypage.friends.FriendsActivity;
 import com.example.administrator.teamyikezhong.mypage.guanzhu.MyFollowActivity;
 
@@ -37,6 +38,7 @@ public interface HttpComponent {
     void inject(CollectionActivity collectionActivity);
     void inject(FriendsActivity friendsActivity);
     void inject(ShePassActivity shePassActivity);
+    void inject(FaBuDuanActivity faBuDuanActivity);
 
 
 }

@@ -1,5 +1,6 @@
 package com.example.administrator.teamyikezhong.net;
 
+import com.example.administrator.teamyikezhong.bean.BaseBean;
 import com.example.administrator.teamyikezhong.bean.FollowUsersBean;
 import com.example.administrator.teamyikezhong.bean.FriendsBean;
 import com.example.administrator.teamyikezhong.bean.HotFollowBean;
@@ -43,5 +44,7 @@ public class UsersFollowApi {
         return usersFollowApiService.searchFriends(keywords);
     }
 
-
+    public  Observable<BaseBean> publishJoke( String uid,  String token,  String content){
+        return usersFollowApiService.publishJoke(uid, token, content);
+    }
 }

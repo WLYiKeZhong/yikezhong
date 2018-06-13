@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent">
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/videosView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></com.jcodecraeer.xrecyclerview.XRecyclerView>
+
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/talk_item_floating"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_below="@+id/videosView"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentRight="true"
+        app:fab_addButtonSize="mini"
+        app:fab_expandDirection="left">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/talk_item_floating_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_icon="@drawable/raw_1499933216"
+            app:fab_size="mini" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/talk_item_floating_b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_icon="@drawable/raw_1499933789"
+            app:fab_size="mini" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/talk_item_floating_xihuan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_icon="@drawable/raw_1499995160"
+            app:fab_size="mini" />
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+</RelativeLayout>

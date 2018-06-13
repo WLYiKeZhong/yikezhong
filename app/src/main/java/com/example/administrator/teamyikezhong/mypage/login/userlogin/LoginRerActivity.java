@@ -16,6 +16,7 @@ import com.example.administrator.teamyikezhong.bean.UserBean;
 
 import com.example.administrator.teamyikezhong.component.DaggerHttpComponent;
 import com.example.administrator.teamyikezhong.mypage.collection.CollectionActivity;
+import com.example.administrator.teamyikezhong.mypage.fabu.duanzi.FaBuDuanActivity;
 import com.example.administrator.teamyikezhong.mypage.friends.FriendsActivity;
 import com.example.administrator.teamyikezhong.mypage.guanzhu.MyFollowActivity;
 import com.example.administrator.teamyikezhong.mypage.login.reg.RegActivity;
@@ -136,7 +137,7 @@ public class LoginRerActivity extends BaseActivity<LoginPresenter> implements Vi
             startActivity(intent);
         }else  if(flay==4){
             finish();
-            Intent intent = new Intent(LoginRerActivity.this, FriendsActivity.class);
+            Intent intent = new Intent(LoginRerActivity.this, FaBuDuanActivity.class);
             startActivity(intent);
         }
 

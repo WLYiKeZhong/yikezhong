@@ -80,12 +80,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/linear_nightMode"
             android:layout_below="@+id/lv"
             android:layout_marginTop="60dp"
             android:orientation="horizontal">
             <ImageView
                 android:layout_width="35dp"
                 android:layout_height="35dp"
+                android:id="@+id/mian_day"
                 android:src="@drawable/yl"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -96,6 +98,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
+                android:id="@+id/main_none"
                 android:text="开启"/>
         </LinearLayout>
 
@@ -110,11 +113,13 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_weight="1"
+                android:id="@+id/zuopin"
                 android:src="@drawable/raw_1499947056"/>
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_weight="1"
+                android:id="@+id/shezhi"
                 android:src="@drawable/raw_1499947157"/>
         </LinearLayout>
 
