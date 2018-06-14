@@ -1,5 +1,6 @@
 package com.example.administrator.teamyikezhong.ui.detail;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -13,6 +14,7 @@ import com.example.administrator.teamyikezhong.component.DaggerHttpComponent;
 import com.example.administrator.teamyikezhong.ui.base.BaseActivity;
 import com.example.administrator.teamyikezhong.ui.detail.contract.DetailContract;
 import com.example.administrator.teamyikezhong.ui.detail.persenter.DetailPersenter;
+import com.example.administrator.teamyikezhong.ui.yonghuyemian.YongHuActivity;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
@@ -53,6 +55,7 @@ public class VideosDeailActivity extends BaseActivity<DetailPersenter> implement
         DaggerHttpComponent.builder()
                 .build()
                 .inject(this);
+
     }
 
     @Override
@@ -67,12 +70,10 @@ public class VideosDeailActivity extends BaseActivity<DetailPersenter> implement
         mDetailVideos.setUp(videoUrl, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL);
        /* mTvNum.setText(detailBean.getData().getPlayNum());*/
         mTvTime.setText(detailBean.getData().getCreateTime());
-        detailSimle.setImageURI(detailBean.getData().getUser().getIcon());
 
     }
 
     public void initData() {
-    /*  SharedPreferencesUtils.getParam(this,"wid",)*/
         int wid = getIntent().getIntExtra("wid", 0);
 
         mPresenter.getVideoDetail(String.valueOf(wid));
@@ -83,9 +84,11 @@ public class VideosDeailActivity extends BaseActivity<DetailPersenter> implement
 
         mTvNum = (TextView) findViewById(R.id.tv_num);
         mTvTime = (TextView) findViewById(R.id.tv_time);
-        detailSimle = findViewById(R.id.detailSimle);
+        detailSimle = findViewById(R.id.detailSimleView);
         fanhui = findViewById(R.id.fanhui);
         fanhui.setOnClickListener(this);
+        detailSimle.setOnClickListener(this);
+
 
     }
 
@@ -98,6 +101,11 @@ public class VideosDeailActivity extends BaseActivity<DetailPersenter> implement
         switch (view.getId()){
             case R.id.fanhui:
                 finish();//返回上一层
+                break;
+            case R.id.detailSimleView:
+                //跳转用户页面
+                Intent intent=new Intent(VideosDeailActivity.this,YongHuActivity.class);
+                startActivity(intent);
                 break;
         }
     }

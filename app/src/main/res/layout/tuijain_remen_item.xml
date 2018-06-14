@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:padding="10dp"
-    >
+    android:padding="10dp"  >
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp">
@@ -16,7 +16,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@drawable/wwww" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -77,58 +77,146 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/pb"
+        android:id="@+id/tjPb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:text="天气美美的适合郊游"
+        android:layout_marginTop="20dp"
         android:textColor="@android:color/black"
         android:textSize="20dp" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="300dp">
+
 
         <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
             android:id="@+id/videoplayer"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            >
+            android:layout_height="300dp" >
         </fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard>
+    <com.example.administrator.teamyikezhong.utils.HearXinLayout
+        android:id="@+id/heart_layout"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" ></com.example.administrator.teamyikezhong.utils.HearXinLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal" >
 
         <LinearLayout
-            android:id="@+id/linear"
+        android:id="@+id/linear"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:id="@+id/member_send_good"
+            android:background="@drawable/raw1499933215"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_horizontal" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="1561"
+            android:textColor="#aea9a9" />
+
+    </LinearLayout>
+
+
+        <LinearLayout
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/sc_aa"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="收藏"
-                android:textColor="#ffffff" />
-
-            <CheckBox
-                android:id="@+id/member_send_good"
+            <ImageView
+                android:id="@+id/member_send_xing"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                  android:background="@drawable/xin_check"
-                  android:button="@null"
-                android:checked="false"
-                android:layout_gravity="center_horizontal"
-                 />
+                android:background="@drawable/wujiaoxing" />
+            <ImageView
+                android:id="@+id/member_send_xing2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:visibility="gone"
+                android:background="@drawable/raw_1499947358" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="644"
+                android:textColor="#aea9a9" />
+        </LinearLayout>
+        <LinearLayout
+
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+      <ImageView
+          android:layout_width="30dp"
+          android:layout_height="30dp"
+          android:background="@drawable/raw_1499933789"
+          />
+
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="1561"
+                android:textColor="#aea9a9" />
 
         </LinearLayout>
 
+        <LinearLayout
 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/member_send_feixiang"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/raw_1499995160"
+                android:button="@null"
+                android:checked="false"
+                android:layout_gravity="center_horizontal"
+                />
 
-        <!-- 飘心的路径 -->
-    </RelativeLayout>
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1235"
+                android:textColor="#aea9a9" />
+        </LinearLayout>
+
+    </LinearLayout>
+
     <View
         android:id="@+id/view1"
         android:layout_width="match_parent"

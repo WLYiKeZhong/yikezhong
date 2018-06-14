@@ -46,7 +46,7 @@ public class RecommendFragment extends BaseFragment {
         data.add("热门");
         data.add("关注");
 
-        MyAdapter myAdapter = new MyAdapter(getFragmentManager(),list,data);
+        MyAdapter myAdapter = new MyAdapter(getChildFragmentManager(),list,data);
         mTuijianViewpager.setAdapter(myAdapter);
         //final boolean isLogin = CommonUtils.getBoolean("isLogin");
         mMainTab.setupWithViewPager(mTuijianViewpager);

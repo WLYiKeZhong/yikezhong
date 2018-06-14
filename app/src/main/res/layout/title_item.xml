@@ -19,12 +19,15 @@
         android:textSize="25dp"
         android:id="@+id/tv_title"
         android:layout_centerInParent="true"/>
-    <com.facebook.drawee.view.SimpleDraweeView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentRight="true"
 
-        fresco:placeholderImage="@drawable/raw_1500034665"
-        android:id="@+id/xie"/>
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/xie"
+        android:layout_width="40dp"
+
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/sdv"
+        fresco:placeholderImage="@drawable/raw_1500034665" />
 
 </RelativeLayout>

@@ -83,6 +83,32 @@ public class ParagraphFragment extends BaseFragment<DuaiZiPersenter> implements 
         });
     }
 
+    private void hideProgressDialog() {
+
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
+            //    progressDialog.hide();
+        }
+    }
+
+    public void showProgressDialog(String title, String message) {
+
+        if (progressDialog == null) {
+
+            progressDialog = ProgressDialog.show(getActivity(), title,
+                    message, true, false);
+
+
+        } else if (progressDialog.isShowing()) {
+            progressDialog.setTitle(title);
+            progressDialog.setMessage(message);
+
+        }
+        progressDialog.setCancelable(true);
+        progressDialog.show();
+    }
+
+
     @Override
     public void onJokesSuccess(DuanZiBean duanZiBean) {
         xrecy.loadMoreComplete();
@@ -113,31 +139,4 @@ public class ParagraphFragment extends BaseFragment<DuaiZiPersenter> implements 
 
         hideProgressDialog();
     }
-
-    private void hideProgressDialog() {
-
-        if (progressDialog != null && progressDialog.isShowing()) {
-            progressDialog.dismiss();
-            //    progressDialog.hide();
-        }
-    }
-
-    public void showProgressDialog(String title, String message) {
-
-        if (progressDialog == null) {
-
-            progressDialog = ProgressDialog.show(getActivity(), title,
-                    message, true, false);
-
-
-        } else if (progressDialog.isShowing()) {
-            progressDialog.setTitle(title);
-            progressDialog.setMessage(message);
-
-        }
-        progressDialog.setCancelable(true);
-        progressDialog.show();
-    }
-
-
 }

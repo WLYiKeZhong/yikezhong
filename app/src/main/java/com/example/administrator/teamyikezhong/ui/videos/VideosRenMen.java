@@ -2,6 +2,7 @@ package com.example.administrator.teamyikezhong.ui.videos;
 
 import android.content.Intent;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.View;
 
 import com.example.administrator.teamyikezhong.R;
@@ -71,6 +72,7 @@ public  void  initVieos( int page){
 
     @Override
     public void onHotVideosSuccess(HotVideosBean hotVideosBean) {
+        Log.d("videos",hotVideosBean.getMsg());
         videosView.refreshComplete();//关闭刷新
         data = hotVideosBean.getData();
         HotVideosAdapter hotVideosAdapter=new HotVideosAdapter(getActivity(),data);
@@ -81,7 +83,6 @@ public  void  initVieos( int page){
             public void onItemClick(int postion) {
                 //跳转详情页面
                 Intent intent=new Intent(getActivity(),VideosDeailActivity.class);
-                 /* SharedPreferencesUtils.setParam(getActivity(),"wid",data.get(postion).getWid());*/
                  intent.putExtra("wid",data.get(postion).getWid());
                 startActivity(intent);
             }

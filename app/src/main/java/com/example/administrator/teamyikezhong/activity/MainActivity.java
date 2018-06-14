@@ -1,5 +1,4 @@
 package com.example.administrator.teamyikezhong.activity;
-import com.example.administrator.teamyikezhong.R;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,7 +7,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +21,7 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-import com.example.administrator.teamyikezhong.fragment.PhotosFragment;
+import com.example.administrator.teamyikezhong.R;
 import com.example.administrator.teamyikezhong.mypage.collection.CollectionActivity;
 import com.example.administrator.teamyikezhong.mypage.fabu.FaBuActivity;
 import com.example.administrator.teamyikezhong.mypage.friends.FriendsActivity;
@@ -33,10 +30,11 @@ import com.example.administrator.teamyikezhong.mypage.login.LoginActivity;
 import com.example.administrator.teamyikezhong.mypage.shezhi.ShezhiActivity;
 import com.example.administrator.teamyikezhong.mypage.xiaoxi.XiaoXiActivity;
 import com.example.administrator.teamyikezhong.mypage.zuopin.MyZuoPinActivity;
+import com.example.administrator.teamyikezhong.title.TitleActivity;
 import com.example.administrator.teamyikezhong.ui.duanzi.ParagraphFragment;
+import com.example.administrator.teamyikezhong.ui.qutu.PhotosFragment;
 import com.example.administrator.teamyikezhong.ui.tuijian.RecommendFragment;
 import com.example.administrator.teamyikezhong.ui.videos.VideoFragment;
-import com.example.administrator.teamyikezhong.title.TitleActivity;
 import com.example.administrator.teamyikezhong.utils.SharedPreferencesUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.hjm.bottomtabbar.BottomTabBar;
@@ -65,11 +63,11 @@ public class MainActivity extends AppCompatActivity  {
     private SimpleDraweeView cesdv;
     private ListView lv;
     private TextView tvName;
-//    private String name;
+    //    private String name;
 //    private String iconUrl;
-private ImageView mMianDay;
-private ImageView zuopin;
-private ImageView shezhi;
+    private ImageView mMianDay;
+    private ImageView zuopin;
+    private ImageView shezhi;
     private Button mMainNone;
     private LinearLayout mLinearNightMode;
     private RelativeLayout left;
@@ -119,7 +117,7 @@ private ImageView shezhi;
 // 3 填充
         lv.setAdapter(adapter);
 
-       // long itemId = adapter.getItemId(0);
+        // long itemId = adapter.getItemId(0);
 
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -127,28 +125,28 @@ private ImageView shezhi;
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 //Toast.makeText(MainActivity.this,list.get(position).toString(),Toast.LENGTH_SHORT).show();
-               switch (position){
-                   case 0:
-                       Toast.makeText(MainActivity.this,"0",Toast.LENGTH_SHORT).show();
-                       Intent intent = new Intent(MainActivity.this, MyFollowActivity.class);
-                       startActivity(intent);
-                       break;
-                   case 1:
-                       Toast.makeText(MainActivity.this,"1",Toast.LENGTH_SHORT).show();
-                       Intent intent1 = new Intent(MainActivity.this, CollectionActivity.class);
-                       startActivity(intent1);
-                       break;
-                   case 2:
-                       Toast.makeText(MainActivity.this,"2",Toast.LENGTH_SHORT).show();
-                       Intent intent2 = new Intent(MainActivity.this, FriendsActivity.class);
-                       startActivity(intent2);
-                       break;
-                   case 3:
-                       Toast.makeText(MainActivity.this,"3",Toast.LENGTH_SHORT).show();
-                       Intent intent3 = new Intent(MainActivity.this, XiaoXiActivity.class);
-                       startActivity(intent3);
-                       break;
-               }
+                switch (position){
+                    case 0:
+                        Toast.makeText(MainActivity.this,"0",Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, MyFollowActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 1:
+                        Toast.makeText(MainActivity.this,"1",Toast.LENGTH_SHORT).show();
+                        Intent intent1 = new Intent(MainActivity.this, CollectionActivity.class);
+                        startActivity(intent1);
+                        break;
+                    case 2:
+                        Toast.makeText(MainActivity.this,"2",Toast.LENGTH_SHORT).show();
+                        Intent intent2 = new Intent(MainActivity.this, FriendsActivity.class);
+                        startActivity(intent2);
+                        break;
+                    case 3:
+                        Toast.makeText(MainActivity.this,"3",Toast.LENGTH_SHORT).show();
+                        Intent intent3 = new Intent(MainActivity.this, XiaoXiActivity.class);
+                        startActivity(intent3);
+                        break;
+                }
 
             }
         });
@@ -170,7 +168,7 @@ private ImageView shezhi;
 
         mMianDay = (ImageView) findViewById(R.id.mian_day);
         mMainNone =  findViewById(R.id.main_none);
-       // mMainNone.setOnClickListener(this);
+        // mMainNone.setOnClickListener(this);
         mLinearNightMode = (LinearLayout) findViewById(R.id.linear_nightMode);
         left = (RelativeLayout) findViewById(R.id.left);
         String uid = (String) SharedPreferencesUtils.getParam(MainActivity.this, "uid", "-1");
@@ -228,23 +226,23 @@ private ImageView shezhi;
                 .setOnTabChangeListener(new BottomTabBar.OnTabChangeListener() {
                     @Override
                     public void onTabChange(int position, String name) {
-                            ta.setTitle(name);
+                        ta.setTitle(name);
                     }
                 });
 
-ta.setOnItemTitleClickListener(new TitleActivity.OnItemTitleClickListener() {
-    @Override
-    public void onClickleft(View v) {
-        drawerlayout.openDrawer(Gravity.LEFT);
+        ta.setOnItemTitleClickListener(new TitleActivity.OnItemTitleClickListener() {
+            @Override
+            public void onClickleft(View v) {
+                drawerlayout.openDrawer(Gravity.LEFT);
 
-    }
+            }
 
-    @Override
-    public void onClickrigth(View v) {
-        Intent intent = new Intent(MainActivity.this, FaBuActivity.class);
-        startActivity(intent);
-    }
-});
+            @Override
+            public void onClickrigth(View v) {
+                Intent intent = new Intent(MainActivity.this, FaBuActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

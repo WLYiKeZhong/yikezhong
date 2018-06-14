@@ -50,7 +50,11 @@ public class NearVideoAdapter extends RecyclerView.Adapter<NearVideoHolder> {
 
     @Override
     public int getItemCount() {
-        return list.size();
+        if (list!=null){
+            return list.size();
+
+        }
+        return 0;
     }
     public  void  onVideosItemLintenr(OnItemLinter onItemLinter){
         this.onItemLinter=onItemLinter;

@@ -1,8 +1,6 @@
 package com.example.administrator.teamyikezhong.mypage.friends;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,9 +16,7 @@ import com.example.administrator.teamyikezhong.R;
 import com.example.administrator.teamyikezhong.bean.FriendsBean;
 import com.example.administrator.teamyikezhong.bean.SouFriendsBean;
 import com.example.administrator.teamyikezhong.component.DaggerHttpComponent;
-import com.example.administrator.teamyikezhong.mypage.collection.CollectionActivity;
 import com.example.administrator.teamyikezhong.mypage.friends.adapter.FriendsAdapter;
-import com.example.administrator.teamyikezhong.mypage.login.userlogin.LoginRerActivity;
 import com.example.administrator.teamyikezhong.ui.base.BaseActivity;
 import com.example.administrator.teamyikezhong.utils.SharedPreferencesUtils;
 
@@ -113,7 +109,10 @@ public class FriendsActivity extends BaseActivity<FriendsPresenter> implements V
 
     @Override
     public void inject() {
-        DaggerHttpComponent.builder().build().inject(this);
+        DaggerHttpComponent.builder()
+                .build()
+                .inject(this);
+
     }
 
     @Override

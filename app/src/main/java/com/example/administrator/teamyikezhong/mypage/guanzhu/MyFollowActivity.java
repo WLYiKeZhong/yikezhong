@@ -2,7 +2,6 @@ package com.example.administrator.teamyikezhong.mypage.guanzhu;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,9 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.teamyikezhong.R;
-import com.example.administrator.teamyikezhong.activity.MainActivity;
 import com.example.administrator.teamyikezhong.bean.FollowUsersBean;
-
 import com.example.administrator.teamyikezhong.component.DaggerHttpComponent;
 import com.example.administrator.teamyikezhong.mypage.guanzhu.adapter.MyFollowAdapter;
 import com.example.administrator.teamyikezhong.mypage.guanzhu.hotfollow.HotFollowActivity;
@@ -86,7 +83,9 @@ public class MyFollowActivity extends BaseActivity<MyFollowPresenter> implements
 
     @Override
     public void inject() {
-       DaggerHttpComponent.builder().build().inject(this);
+       DaggerHttpComponent.builder()
+               .build()
+               .inject(this);
 
     }
 

@@ -45,7 +45,7 @@ public class VideoFragment extends BaseFragment{
         data.add("热门");
         data.add("附近");
 
-        MyAdapter myAdapter = new MyAdapter(getFragmentManager(),list,data);
+        MyAdapter myAdapter = new MyAdapter(getChildFragmentManager(),list,data);
         videos_viewpager.setAdapter(myAdapter);
         //final boolean isLogin = CommonUtils.getBoolean("isLogin");
         videos_tab .setupWithViewPager(videos_viewpager);

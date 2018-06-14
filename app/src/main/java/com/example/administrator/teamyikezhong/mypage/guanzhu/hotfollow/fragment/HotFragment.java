@@ -1,20 +1,12 @@
 package com.example.administrator.teamyikezhong.mypage.guanzhu.hotfollow.fragment;
 
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.administrator.teamyikezhong.R;
 import com.example.administrator.teamyikezhong.bean.HotFollowBean;
-
-
 import com.example.administrator.teamyikezhong.component.DaggerHttpComponent;
 import com.example.administrator.teamyikezhong.mypage.guanzhu.hotfollow.HotFollowContract;
 import com.example.administrator.teamyikezhong.mypage.guanzhu.hotfollow.HotFollowPresenter;
@@ -40,8 +32,10 @@ public class HotFragment extends BaseFragment<HotFollowPresenter> implements Hot
 
     @Override
     public void inject() {
+        DaggerHttpComponent.builder()
+                .build()
+                .inject(this);
 
-        DaggerHttpComponent.builder().build().inject(this);
     }
 
     @Override

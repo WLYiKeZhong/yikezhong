@@ -50,13 +50,12 @@
           />
 
       <com.facebook.drawee.view.SimpleDraweeView
-          android:id="@+id/detailSimle"
+          android:id="@+id/detailSimleView"
           android:layout_width="60dp"
           android:layout_height="60dp"
-          app:roundAsCircle="true"
-          android:layout_marginBottom="10dp"
-          app:placeholderImage="@drawable/wwww"
-          android:layout_marginLeft="180dp"
+
+          android:background="@drawable/wwww"
+          android:layout_marginLeft="100dp"
           />
   </LinearLayout>
     <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard

@@ -38,6 +38,7 @@ public class VideosFuJin extends BaseFragment<VideoFuJinPersenter> implements Vi
         DaggerHttpComponent.builder()
                 .build()
                 .inject(this);
+
     }
 
     @Override

@@ -35,7 +35,6 @@
         <activity android:name=".mypage.login.reg.RegActivity" />
         <activity android:name=".ui.detail.VideosDeailActivity" />
         <activity android:name=".ui.detail.DuanZiDetailActivity" />
-        <activity android:name=".mypage.login.reg.RegActivity" />
         <activity android:name=".mypage.guanzhu.MyFollowActivity" />
         <activity android:name=".mypage.guanzhu.hotfollow.HotFollowActivity" />
         <activity
@@ -60,6 +59,7 @@
         <activity android:name=".mypage.xiaoxi.XiaoXiActivity" />
         <activity android:name=".mypage.login.wangjipass.WjPassActivity" />
         <activity android:name=".mypage.login.wangjipass.ShePassActivity" />
+        <activity android:name=".ui.yonghuyemian.YongHuActivity"></activity>
         <activity android:name=".mypage.shezhi.ShezhiActivity" />
         <activity android:name=".mypage.zuopin.MyZuoPinActivity" />
         <activity android:name=".mypage.fabu.FaBuActivity" />

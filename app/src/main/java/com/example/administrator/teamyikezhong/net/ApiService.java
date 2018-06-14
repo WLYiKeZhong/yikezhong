@@ -5,6 +5,7 @@ import com.example.administrator.teamyikezhong.bean.DetailBean;
 import com.example.administrator.teamyikezhong.bean.DuanZiBean;
 import com.example.administrator.teamyikezhong.bean.HotVideosBean;
 import com.example.administrator.teamyikezhong.bean.JokeDetailBean;
+import com.example.administrator.teamyikezhong.bean.ParsieBean;
 import com.example.administrator.teamyikezhong.bean.VideosBean;
 import com.example.administrator.teamyikezhong.bean.VideosNearBean;
 
@@ -38,5 +39,13 @@ public interface ApiService {
     //段子详情
     @GET("quarter/getJokeDetail")
     Observable<JokeDetailBean> getJokeDetail(@Query("jid") String jid);
-
+       //点赞
+    @GET("quarter/praise")
+    Observable<ParsieBean> getPraise(@Query("uid") String uid,@Query("wid") String wid,@Query("token") String token);
+  //添加收藏
+    @GET("quarter/addFavorite")
+    Observable<ParsieBean> addFavorite(@Query("uid") String uid,@Query("wid") String wid,@Query("token") String token);
+    //取消收藏
+    @GET("quarter/cancelFavorite")
+    Observable<ParsieBean> cancelFavorite(@Query("uid") String uid,@Query("wid") String wid,@Query("token") String token);
 }
