@@ -4,6 +4,7 @@ package com.example.administrator.teamyikezhong.component;
 import com.example.administrator.teamyikezhong.module.HttpModule;
 import com.example.administrator.teamyikezhong.mypage.collection.CollectionActivity;
 import com.example.administrator.teamyikezhong.mypage.fabu.duanzi.FaBuDuanActivity;
+import com.example.administrator.teamyikezhong.mypage.fabu.shipin.VideoActivity;
 import com.example.administrator.teamyikezhong.mypage.friends.FriendsActivity;
 import com.example.administrator.teamyikezhong.mypage.guanzhu.MyFollowActivity;
 import com.example.administrator.teamyikezhong.mypage.guanzhu.hotfollow.fragment.HotFragment;
@@ -41,6 +42,7 @@ public interface HttpComponent {
     void inject(FriendsActivity friendsActivity);
     void inject(ShePassActivity shePassActivity);
     void inject(FaBuDuanActivity faBuDuanActivity);
+    void inject(VideoActivity videoActivity);
 
 
 }

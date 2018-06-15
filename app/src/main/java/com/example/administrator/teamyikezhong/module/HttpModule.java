@@ -6,6 +6,9 @@ import com.example.administrator.teamyikezhong.net.ApiService;
 import com.example.administrator.teamyikezhong.net.CommonParamsInterceptor;
 import com.example.administrator.teamyikezhong.net.DetailApi;
 import com.example.administrator.teamyikezhong.net.DuanZiApi;
+import com.example.administrator.teamyikezhong.net.MyInterceptor;
+import com.example.administrator.teamyikezhong.net.UsersFollowApi;
+import com.example.administrator.teamyikezhong.net.UsersFollowApiService;
 import com.example.administrator.teamyikezhong.net.HotVideosApi;
 import com.example.administrator.teamyikezhong.net.JokeDetailApi;
 import com.example.administrator.teamyikezhong.net.NearVideosApi;
@@ -95,7 +98,7 @@ public class HttpModule {
 
     @Provides
     UsersFollowApi provideUsersFollowApi(OkHttpClient.Builder builder){
-        builder.addInterceptor(new CommonParamsInterceptor());//添加拦截器
+        builder.addInterceptor(new MyInterceptor());//添加拦截器
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Api.BASEURL)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

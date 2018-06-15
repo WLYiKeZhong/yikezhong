@@ -37,6 +37,7 @@
         <activity android:name=".mypage.login.reg.RegActivity" />
         <activity android:name=".ui.detail.VideosDeailActivity" />
         <activity android:name=".ui.detail.DuanZiDetailActivity" />
+
         <activity android:name=".mypage.guanzhu.MyFollowActivity" />
         <activity android:name=".mypage.guanzhu.hotfollow.HotFollowActivity" />
         <activity

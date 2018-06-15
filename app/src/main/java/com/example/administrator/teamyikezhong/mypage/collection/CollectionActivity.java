@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.administrator.teamyikezhong.R;
 import com.example.administrator.teamyikezhong.bean.MyCollectionBean;
 import com.example.administrator.teamyikezhong.component.DaggerHttpComponent;
+import com.example.administrator.teamyikezhong.inter.OnItemLinter;
 import com.example.administrator.teamyikezhong.mypage.collection.adapter.CollectionAdapter;
 import com.example.administrator.teamyikezhong.mypage.login.userlogin.LoginRerActivity;
 import com.example.administrator.teamyikezhong.ui.base.BaseActivity;
@@ -33,6 +34,7 @@ public class CollectionActivity extends BaseActivity<CollectionPresenter> implem
      */
     private TextView mShanchu;
     private RecyclerView mRv;
+    private CollectionAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +73,9 @@ public class CollectionActivity extends BaseActivity<CollectionPresenter> implem
                 finish();
                 break;
             case R.id.shanchu:
-
+               // view.setVisibility(View.VISIBLE);
+                adapter.getCheckbox();
+               // adapter.
                 break;
         }
     }
@@ -94,7 +98,18 @@ public class CollectionActivity extends BaseActivity<CollectionPresenter> implem
         Toast.makeText(CollectionActivity.this,"获取成功",Toast.LENGTH_SHORT).show();
         List<MyCollectionBean.DataBean> data = myCollectionBean.getData();
         Log.e("zzzzzz",data.size()+"");
-        CollectionAdapter adapter = new CollectionAdapter(CollectionActivity.this,data);
+        adapter = new CollectionAdapter(CollectionActivity.this,data);
         mRv.setAdapter(adapter);
+        adapter.setOnItemLinter(new OnItemLinter() {
+            @Override
+            public void onItemClick(int postion) {
+
+            }
+
+            @Override
+            public void onLongItemClick(int postion) {
+
+            }
+        });
     }
 }

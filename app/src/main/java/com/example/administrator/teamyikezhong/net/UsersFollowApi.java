@@ -8,7 +8,10 @@ import com.example.administrator.teamyikezhong.bean.MyCollectionBean;
 import com.example.administrator.teamyikezhong.bean.SouFriendsBean;
 
 import io.reactivex.Observable;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.http.Field;
+import retrofit2.http.Part;
 
 /**
  * Created by Administrator on 2018/6/6 0006.
@@ -47,4 +50,9 @@ public class UsersFollowApi {
     public  Observable<BaseBean> publishJoke( String uid,  String token,  String content){
         return usersFollowApiService.publishJoke(uid, token, content);
     }
+
+    public  Observable<BaseBean> publishVideo( RequestBody uid, MultipartBody.Part videoFile, MultipartBody.Part coverFile, RequestBody token){
+        return usersFollowApiService.publishVideo(uid, videoFile, coverFile,token);
+    }
+
 }

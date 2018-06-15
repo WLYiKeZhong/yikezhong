@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.administrator.teamyikezhong.R;
 import com.example.administrator.teamyikezhong.bean.MyCollectionBean;
+import com.example.administrator.teamyikezhong.inter.OnItemLinter;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
@@ -30,11 +32,17 @@ public class CollectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private Context context;
     private List<MyCollectionBean.DataBean> data;
     private final LayoutInflater inflater;
+    private OnItemLinter onItemLinter;
+    private CollectionViewHolder collectionViewHolder;
 
     public CollectionAdapter(Context context, List<MyCollectionBean.DataBean> data) {
         this.context = context;
         this.data = data;
         inflater = LayoutInflater.from(context);
+    }
+
+    public void setOnItemLinter(OnItemLinter onItemLinter){
+        this.onItemLinter=onItemLinter;
     }
 
     @NonNull
@@ -46,14 +54,27 @@ public class CollectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        CollectionViewHolder collectionViewHolder = (CollectionViewHolder) holder;
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
+        collectionViewHolder = (CollectionViewHolder) holder;
         MyCollectionBean.DataBean dataBean = data.get(position);
         Glide.with(context).load(dataBean.getUser().getIcon().split("\\|")[0]).into(collectionViewHolder.mRcImg);
         collectionViewHolder.mRcName.setText(dataBean.getUser().getNickname());
         collectionViewHolder.mRcTime.setText(dataBean.getCreateTime());
         collectionViewHolder.mPb.setText(dataBean.getWorkDesc());
         collectionViewHolder.mVideoplayer.setUp(dataBean.getVideoUrl(), JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, "视频播放");
+        collectionViewHolder.cb_xuan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemLinter.onItemClick(position);
+            }
+        });
+
+    }
+
+    public void getCheckbox(){
+        for (int i = 0; i <data.size() ; i++) {
+            collectionViewHolder.cb_xuan.setVisibility(View.VISIBLE);
+        }
 
     }
 
@@ -78,6 +99,7 @@ public class CollectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
 
         public View mView1;
+        public CheckBox cb_xuan;
 
 
         private boolean flag = true;
@@ -101,6 +123,7 @@ public class CollectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
 
             mView1 = itemView.findViewById(R.id.view1);
+            cb_xuan = itemView.findViewById(R.id.cb_xuan);
         }
     }
 }
