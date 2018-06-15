@@ -24,6 +24,7 @@
       android:id="@+id/linearLayout">
 
       <ImageView
+
           android:id="@+id/fanhui"
           android:layout_width="30dp"
           android:layout_height="30dp"
@@ -31,18 +32,21 @@
           android:background="@drawable/raw_1500019926"
           />
        <ImageView
+           android:id="@+id/imgXin"
            android:layout_width="30dp"
            android:layout_height="30dp"
            android:background="@drawable/raw_1499933216"
            android:layout_marginLeft="15dp"
            />
       <ImageView
+          android:id="@+id/suiXin"
           android:layout_width="30dp"
           android:layout_height="30dp"
           android:background="@drawable/raw_1499933217"
           android:layout_marginLeft="15dp"
           />
       <ImageView
+          android:id="@+id/fenXiang"
           android:layout_width="30dp"
           android:layout_height="30dp"
           android:background="@drawable/raw_1499995160"

@@ -1,5 +1,6 @@
 package com.example.administrator.teamyikezhong.ui.tuijian.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -8,15 +9,21 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.administrator.teamyikezhong.R;
 import com.example.administrator.teamyikezhong.bean.VideosBean;
+import com.example.administrator.teamyikezhong.inter.OnVideoItemLintenr;
 import com.example.administrator.teamyikezhong.ui.tuijian.persenter.TongYongPersenter;
 import com.example.administrator.teamyikezhong.utils.HearXinLayout;
 import com.example.administrator.teamyikezhong.utils.SharedPreferencesUtils;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.UMShareListener;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.media.UMImage;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
@@ -30,13 +37,16 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosHodler> {
     private  TongYongPersenter mPersenters;
     private Context context;
     private VideosBean videosBean;
-  /*  private boolean flag[];*/
+    private boolean flag;
     VideosBean.DataBean dataBean;
+    OnVideoItemLintenr onVideoItemLintenr;
+    String uid;
     public VideosAdapter(TongYongPersenter mPersenters, Context context, VideosBean videosBean) {
         this.mPersenters = mPersenters;
         this.context = context;
         this.videosBean = videosBean;
-       /*  boolean[] flags = new boolean[1];*/
+
+
     }
 
     public VideosHodler onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -46,7 +56,7 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosHodler> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final VideosHodler holder, int position) {
+    public void onBindViewHolder(@NonNull final VideosHodler holder, final int position) {
         CircleImageView icon = holder.getImg();
         TextView name = holder.getName();
         TextView time = holder.getTime();
@@ -64,6 +74,7 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosHodler> {
         final String id = String.valueOf(dataBean.getUid());
         final String wid = String.valueOf(dataBean.getWid());
         final String token = String.valueOf(SharedPreferencesUtils.getParam(context, "token", ""));
+         uid= String.valueOf(SharedPreferencesUtils.getParam(context, "uid", ""));
 
         if (url == null) {
 
@@ -83,52 +94,107 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosHodler> {
                 .into(holder.mVideoplayer.thumbImageView);
         holder.mVideoplayer.widthRatio = 4;//播放比例
         holder.mVideoplayer.heightRatio = 3;
-/*
+//**
         holder.member_send_xing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if (flag[0]) {
-                    flag[0] = false;
-                    holder.member_send_xing.setVisibility(View.VISIBLE);
-                    mPersenters.cancelFavorite(id, wid, token);
-                    holder.member_send_xing.setVisibility(View.GONE);
+                if (flag) {
+                    flag = false;
+                    Toast.makeText(context,"    取消收藏",Toast.LENGTH_SHORT).show();
+
+                  /*  mPersenters.cancelFavorite(id, wid, token);*/
+
                     holder.member_send_xing.setImageResource(R.drawable.wujiaoxing);
                 } else {
-                    flag[0] = true;
+                    flag = true;
 
-                    holder.member_send_xing.setVisibility(View.GONE);
-                    mPersenters.addFavorite(id, wid, token);
-                    holder.member_send_xing.setVisibility(View.VISIBLE);
+                    Toast.makeText(context,"已收藏",Toast.LENGTH_SHORT).show();
+
+                 /*   mPersenters.addFavorite(id, wid, token);*/
+
 
                     holder.member_send_xing.setImageResource(R.drawable.raw_1499947358);
                 }
 
 
             }
-        });*/
-       /* //点赞
-        holder.mTalkItemFloatingA.setOnClickListener(new View.OnClickListener() {
+        });
+
+      //分享
+        holder.mTalkItemFloatingXihuan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mPersenters.getPraise(id, wid, token);
+                Toast.makeText(context,"热门开始分享",Toast.LENGTH_SHORT).show();
+                UMImage image = new UMImage(context, "http://img.zcool" +
+                        ".cn/community/01d881579dc3620000018c1b430c4b.JPG@3000w_1l_2o_100sh.jpg");//网络图片
+
+                new ShareAction((Activity) context).withMedia(image).setDisplayList
+                        (SHARE_MEDIA.WEIXIN, SHARE_MEDIA
+                                        .WEIXIN_CIRCLE,
+                                SHARE_MEDIA.QQ,
+                                SHARE_MEDIA.QZONE)
+                        .setCallback(shareListener).open();
+
             }
-        });*/
+        });
     }
-  /*  public void onClick(View view) {
+    /**
+     * 分享
+     */
+    private UMShareListener shareListener = new UMShareListener() {
+        /**
+         * @descrption 分享开始的回调
+         * @param platform 平台类型
+         */
+        @Override
+        public void onStart(SHARE_MEDIA platform) {
+
+        }
+
+        /**
+         * @descrption 分享成功的回调
+         * @param platform 平台类型
+         */
+        @Override
+        public void onResult(SHARE_MEDIA platform) {
+            Toast.makeText(context,"成功了",Toast.LENGTH_LONG).show();
+        }
+
+        /**
+         * @descrption 分享失败的回调
+         * @param platform 平台类型
+         * @param t 错误原因
+         */
+        @Override
+        public void onError(SHARE_MEDIA platform, Throwable t) {
+            Toast.makeText(context,"失败"+t.getMessage(),Toast.LENGTH_LONG).show();
+        }
+
+        /**
+         * @descrption 分享取消的回调
+         * @param platform 平台类型
+         */
+        @Override
+        public void onCancel(SHARE_MEDIA platform) {
+            Toast.makeText(context,"取消了",Toast.LENGTH_LONG).show();
+
+        }
+    };
+
+    public void onClick(View view) {
         VideosHodler holder;
         holder=new VideosHodler(view);
-        final String uid = String.valueOf(SharedPreferencesUtils.getParam(context, "uid", ""));
 
 
         final String wid = String.valueOf(dataBean.getWid());
         final String token = String.valueOf(SharedPreferencesUtils.getParam(context, "token", ""));
 
-        holder.member_send_xing.setVisibility(View.GONE);
+     /*   holder.member_send_xing.setVisibility(View.GONE);
         holder.member_send_xing2.setVisibility(View.VISIBLE);
-        mPersenters.addFavorite(uid,wid,token);
+        mPersenters.addFavorite(uid,wid,token);*/
 
-}*/
+}
 
 
     @Override
@@ -140,10 +206,15 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosHodler> {
 
 
     }
+    public  void  onVideosItemLintenr(OnVideoItemLintenr onVideoItemLintenr){
+        this.onVideoItemLintenr=onVideoItemLintenr;
+    }
+
 
 }
 
 class VideosHodler extends RecyclerView.ViewHolder {
+    private Context context;
     public CircleImageView mRcImg;
     public TextView mRcName;
     public TextView mRcTime;
@@ -156,7 +227,7 @@ class VideosHodler extends RecyclerView.ViewHolder {
 
 
     public ImageView member_send_xing;
-    public ImageView member_send_xing2;
+
     public LinearLayout mLinear;
     public ImageView mMemberSendGood;
 
@@ -178,7 +249,6 @@ class VideosHodler extends RecyclerView.ViewHolder {
         mPb = itemView.findViewById(R.id.tjPb);
         mVideoplayer = itemView.findViewById(R.id.videoplayer);
         member_send_xing = itemView.findViewById(R.id.member_send_xing);
-        member_send_xing2 = itemView.findViewById(R.id.member_send_xing2);
         mMemberSendGood = itemView.findViewById(R.id.member_send_good);
         heartLayout = itemView.findViewById(R.id.heart_layout);
 
@@ -187,6 +257,7 @@ class VideosHodler extends RecyclerView.ViewHolder {
         itemView.findViewById(R.id.member_send_good).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 heartLayout.addFavor();
 
             }

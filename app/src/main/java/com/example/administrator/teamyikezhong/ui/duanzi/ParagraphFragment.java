@@ -135,6 +135,7 @@ public class ParagraphFragment extends BaseFragment<DuaiZiPersenter> implements 
             public void onLongItemClick(int postion) {
 
             }
+
         });
 
         hideProgressDialog();

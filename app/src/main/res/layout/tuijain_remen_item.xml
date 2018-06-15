@@ -93,20 +93,19 @@
             android:layout_width="match_parent"
             android:layout_height="300dp" >
         </fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard>
-    <com.example.administrator.teamyikezhong.utils.HearXinLayout
-        android:id="@+id/heart_layout"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" ></com.example.administrator.teamyikezhong.utils.HearXinLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
         android:orientation="horizontal" >
-
+        <com.example.administrator.teamyikezhong.utils.HearXinLayout
+            android:id="@+id/heart_layout"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true" ></com.example.administrator.teamyikezhong.utils.HearXinLayout>
         <LinearLayout
         android:id="@+id/linear"
         android:layout_width="40dp"
@@ -140,7 +139,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
             android:orientation="vertical">
 
             <ImageView
@@ -148,12 +146,6 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/wujiaoxing" />
-            <ImageView
-                android:id="@+id/member_send_xing2"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:visibility="gone"
-                android:background="@drawable/raw_1499947358" />
 
             <TextView
 

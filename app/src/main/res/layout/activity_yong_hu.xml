@@ -44,6 +44,7 @@
 
                 />
             <ImageView
+                android:id="@+id/fenxiang"
                 android:layout_width="50dp"
                 android:layout_height="30dp"
                 android:layout_weight="2"
@@ -105,13 +106,13 @@
         android:text="17关注"
         android:textSize="15sp" />
 
-    <Button
+    <TextView
         android:id="@+id/buttonGuan"
         android:layout_width="150dp"
         android:layout_height="40dp"
         android:layout_above="@+id/textView3"
         android:layout_centerHorizontal="true"
-        android:button="@null"
+
         android:drawablePadding="@dimen/heart_anim_length_rand"
         android:gravity="center"
         android:text="+ 关注" />

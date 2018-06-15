@@ -7,4 +7,5 @@ package com.example.administrator.teamyikezhong.inter;
 public interface OnItemLinter {
     void  onItemClick(int postion);
     void  onLongItemClick(int postion);
+
 }

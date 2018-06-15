@@ -112,7 +112,9 @@ public class TuiJian_ReMen extends BaseFragment<RenMenPersenter> implements Reco
         videosAdapter = new VideosAdapter(mPersenters,getActivity(), videosBean);
         mRMView.setAdapter(videosAdapter);
         mRMView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
     }
+
 
     @Override
     public void onTongyongSuccess(ParsieBean parsieBean) {

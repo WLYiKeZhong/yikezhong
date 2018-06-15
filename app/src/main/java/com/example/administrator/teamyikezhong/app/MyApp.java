@@ -14,6 +14,7 @@ public class MyApp extends Application {
     {
         //  PlatformConfig.setWeixin("wx396ea2b17e2f8938", "a33aae6c6649257cbb48de80ddb0bf90");
         PlatformConfig.setQQZone("1106856414", "dHByyWjizkOJihqy");
+
     }
 
     @Override
@@ -21,5 +22,9 @@ public class MyApp extends Application {
         super.onCreate();
         Fresco.initialize(this);
         UMConfigure.init(this, "5ada9fbbb27b0a700b000182", "umeng", UMConfigure.DEVICE_TYPE_PHONE, "");
+
+      /*  UMConfigure.init(this,"5a12384aa40fa3551f0001d1"
+                ,"umeng",UMConfigure.DEVICE_TYPE_PHONE,"");
+        //58edcfeb310c93091c000be2 5965ee00734be40b580001a0*/
     }
 }
